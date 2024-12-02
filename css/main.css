@@ -1,1 +1,52 @@
-hello
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #000000;
+    color: white;
+}
+.landing-image { width: 100%; 
+     height: auto; 
+     max-height: 200px; 
+}
+.game-board {
+    background-color: #121a14;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: auto;
+}
+.hand {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(113, 62, 62, 0.2);
+    border-radius: 5px;
+}
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #bdc153;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+#message {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: rgba(168, 17, 17, 0.2);
+    border-radius: 5px;
+}

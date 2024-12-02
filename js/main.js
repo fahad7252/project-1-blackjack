@@ -1,17 +1,23 @@
 /*----- constants -----*/
-
+  const suits = ["Hearts", "Diamond", "Clubs", "Spades"];
+  const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
   /*----- state variables -----*/
-// Array to hold the current deck of cards 
+
    let deck = []; 
-// Arrays to hold the player's and dealer's hands
    let playerHand = []; 
    let dealerHand = []; 
-// Variable to hold the message element 
-   let messageElement;
+   let bankroll = 1000;
+   let currentBet = 0;
+   let winLoss = 0;
 
   /*----- cached elements  -----*/
-
+const messageElement = document.getElementById('message'); 
+const dealerHandElement = document.getElementById('dealer-hand'); 
+const playerHandElement = document.getElementById('player-hand'); 
+const bankrollElement = document.getElementById('bankroll'); 
+const currentBetElement = document.getElementById('current-bet'); 
+const winLossElement = document.getElementById('win-loss');
 
   /*----- event listeners -----*/
 
