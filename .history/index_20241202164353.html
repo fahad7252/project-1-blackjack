@@ -6,7 +6,6 @@
     <title>Blackjack Game</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/cardstarter.css" type="text/css">
-    
 </head>
 <body>
     <img src="blackjack.JPG"  class="landing-image">
@@ -15,16 +14,20 @@
              <button id="new-game-button">New Game</button> 
              <button id="reset-bank-button">Reset Bank</button></h1>
          <div class="hand">
-            <h2>Dealer's Hand <img src="/images/backs/red.svg" class="card-image"> </h2>
+            <h2>Dealer's Hand</h2>
             <div id="dealer-hand"></div>
-            
         </div>
 
         <div class="hand">
-            <h2>Player's Hand <img src="/images/backs/blue.svg" class="card-image"></h2>
+            <h2>Player's Hand</h2>
             <div id="player-hand"></div>
         </div>
-  
+        <h3>Original Deck</h3>
+  <section id="original-deck-container" class="card-container"></section>
+  <button>RE-SHUFFLE DECK</button>
+  <h3>Shuffled Deck</h3>
+  <section id="shuffled-deck-container" class="card-container">
+  </section>
         <div id="message">Game started. Deal cards!</div>
 
         <div class="controls">

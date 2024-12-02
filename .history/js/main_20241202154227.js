@@ -38,7 +38,6 @@ const winLossElement = document.getElementById('win-loss');
      playerHand = [];
       dealerHand = [];
        message.textContent = 'Game started. Deal cards!';
-       
         updateHands();
         hitStand();
         winnerLoser();

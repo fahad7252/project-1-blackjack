@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack Game</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
-    <link rel="stylesheet" href="css/cardstarter.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
     
 </head>
 <body>
     <img src="blackjack.JPG"  class="landing-image">
     <div class="game-board">
         <h1>Blackjack <button id="start-button">Start Game</button>
-             <button id="new-game-button">New Game</button> 
-             <button id="reset-bank-button">Reset Bank</button></h1>
+             <button id="new-game-button">New Game</button> </h1>
          <div class="hand">
-            <h2>Dealer's Hand <img src="/images/backs/red.svg" class="card-image"> </h2>
+            <h2>Dealer's Hand</h2>
             <div id="dealer-hand"></div>
-            
         </div>
 
         <div class="hand">
-            <h2>Player's Hand <img src="/images/backs/blue.svg" class="card-image"></h2>
+            <h2>Player's Hand</h2>
             <div id="player-hand"></div>
         </div>
-  
+
         <div id="message">Game started. Deal cards!</div>
 
         <div class="controls">
             <button id="deal-button">Deal</button>
             <button id="hit-button">Hit</button>
             <button id="stand-button">Stand</button>
-           
+             
+            
+            <button id="reset-bank-button">Reset Bank</button>
         </div>
         <div class="bank-stats">
             <div>Bankroll: $<span id="bankroll">1000</span></div>
@@ -47,7 +46,7 @@
             <button id="clear-bet">Clear Bet</button>
         </div>
     </div>
-    <div class="card09"></div>
+
     <script defer src="js/main.js"></script>
 </body>
 </html>

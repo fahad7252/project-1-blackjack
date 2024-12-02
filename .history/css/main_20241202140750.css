@@ -1,13 +1,10 @@
 body {
     font-family: Arial, sans-serif;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #000000;
     color: white;
-}
-.card-image {
-    height: 100px;
-    width: 100px;
 }
 .landing-image { width: 100%; 
      height: auto; 

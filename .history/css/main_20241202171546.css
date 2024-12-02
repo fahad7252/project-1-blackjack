@@ -5,10 +5,6 @@ body {
     background-color: #000000;
     color: white;
 }
-.card-image {
-    height: 100px;
-    width: 100px;
-}
 .landing-image { width: 100%; 
      height: auto; 
      max-height: 200px; 
