@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const suits = ["s", "c", "d", "h"];
+const suits = ["Hearts", "Diamond", "Clubs", "Spades"];
 const values = [
   "2",
   "3",
@@ -51,49 +51,14 @@ function init() {
   shuffleDeck();
   startGame();
   stakeMoney();
-  handleDeal();
   playerHand = [];
   dealerHand = [];
   message.textContent = "Game started. Deal cards!";
+
   updateHands();
   hitStand();
   winnerLoser();
   newGame();
   resetBank();
   render();
-}
-
-// LET THE SHOW BEGIN
-function createDeck() {
-  deck = [];
-  suits.forEach((suit) => {
-    values.forEach((value) => {
-      deck.push({ suit, value });
-    });
-  });
-}
-
-function shuffleDeck() {
-  for (let i = deck.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [deck[i], deck[j]] = [deck[j], deck[i]];
-  }
-}
-
-function startGame() {
-  if (currentBet > 0) {
-    playerHand = [drawCard(), drawCard()];
-    dealerHand = [drawCard(), drawCard()];
-    messageElement.textContent = "Hit or Stand";
-    updatehands();
-    render();
-  } else {
-    messageElement.textContent = " Place Bet to start the game ";
-  }
-}
-
-function handleDeal() {
-  if (currentBet > 0) {
-    startGame;
-  }
 }

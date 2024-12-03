@@ -51,7 +51,6 @@ function init() {
   shuffleDeck();
   startGame();
   stakeMoney();
-  handleDeal();
   playerHand = [];
   dealerHand = [];
   message.textContent = "Game started. Deal cards!";
@@ -89,11 +88,5 @@ function startGame() {
     render();
   } else {
     messageElement.textContent = " Place Bet to start the game ";
-  }
-}
-
-function handleDeal() {
-  if (currentBet > 0) {
-    startGame;
   }
 }

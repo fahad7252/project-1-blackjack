@@ -91,9 +91,3 @@ function startGame() {
     messageElement.textContent = " Place Bet to start the game ";
   }
 }
-
-function handleDeal() {
-  if (currentBet > 0) {
-    startGame;
-  }
-}
