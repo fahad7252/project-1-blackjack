@@ -143,23 +143,3 @@ function handleStand() {
     messegeElement = "its tie";
   }
 }
-
-function calculateHand(hand) {
-  let total = 0;
-  let aceCount = 0;
-  hand.forEach((card) => {
-    if (["J", "Q", "K"].includes(card.value)) {
-      total += 10;
-    } else if (card.value === "A") {
-      total += 11;
-      aceCount++;
-    } else {
-      total += Number(card.value);
-    }
-  });
-  while (total > 21 && aceCount > 0) {
-    total -= 10;
-    aceCount--;
-  }
-  return total;
-}

@@ -134,7 +134,7 @@ function handleStand() {
     dealerHand.push(drawCard());
   }
   const playerTotal = calculateHand(playerHand);
-  const dealerTotal = calculateHand(dealerHand);
+  const dealerTotal = calculateHand(dealerhand);
   if (dealerTotal > 21 || playerTotal > dealerTotal) {
     messageElement.textContent = "you win";
   } else if (playerTotal < dealerTotal) {
@@ -142,24 +142,4 @@ function handleStand() {
   } else {
     messegeElement = "its tie";
   }
-}
-
-function calculateHand(hand) {
-  let total = 0;
-  let aceCount = 0;
-  hand.forEach((card) => {
-    if (["J", "Q", "K"].includes(card.value)) {
-      total += 10;
-    } else if (card.value === "A") {
-      total += 11;
-      aceCount++;
-    } else {
-      total += Number(card.value);
-    }
-  });
-  while (total > 21 && aceCount > 0) {
-    total -= 10;
-    aceCount--;
-  }
-  return total;
 }
