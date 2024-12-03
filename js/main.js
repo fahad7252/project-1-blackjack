@@ -55,7 +55,10 @@ function init() {
   playerHand = [];
   dealerHand = [];
   message.textContent = "Game started. Deal cards!";
-  updateHands();
+  updateHands(); // card elements and properties and value with css and new card
+  calculateHand(); // will be doing the math
+  settleBet(); // banks math
+  draw(card); // push new card
   hitStand();
   winnerLoser();
   newGame();
@@ -79,6 +82,24 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
+function updateHands() {
+  playerHandElement.innerHTML = "";
+  dealerHandElement.innerHTML = "";
+  playerHand.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
+    playerHandElement.appendChild(cardElement);
+  });
+  dealerHand.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.className - `card ${card.suit[0].toLowerCase()}${card.value}`;
+    dealerHandElement.appendChild(cardElement);
+  });
+}
+
+function drawCard() {
+  return deck.pop;
+}
 
 function startGame() {
   // create draw card and update hands functions remain
@@ -96,5 +117,29 @@ function startGame() {
 function handleDeal() {
   if (currentBet > 0) {
     startGame;
+  }
+}
+
+function handleHit() {
+  playerHand.push(drawCard());
+  if (calculateHand(playerHand) > 21) {
+    messageElement.textContent = "Bust! Dealer wins";
+  } else {
+    updatehands();
+    render();
+  }
+}
+function handleStand() {
+  while (calculateHand(dealerHand) < 17) {
+    dealerHand.push(drawCard());
+  }
+  const playerTotal = calculateHand(playerHand);
+  const dealerTotal = calculateHand(dealerhand);
+  if (dealerTotal > 21 || playerTotal > dealerTotal) {
+    messageElement.textContent = "you win";
+  } else if (playerTotal < dealerTotal) {
+    messageElement.textContent = "dealer wins";
+  } else {
+    messegeElement = "its tie";
   }
 }
