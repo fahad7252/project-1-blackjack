@@ -39,9 +39,13 @@ document.getElementById("deal-button").addEventListener("click", handleDeal);
 document.getElementById("hit-button").addEventListener("click", handleHit);
 document.getElementById("stand-button").addEventListener("click", handleStand);
 document.getElementById("start-button").addEventListener("click", startGame);
+document.getElementById("new-game-button").addEventListener("click", newGame);
+document
+  .getElementById("reset-bank-button")
+  .addEventListener("click", resetBank);
 
 /*----- functions -----*/
-/*init();
+/init();
 function init() {
   createDeck();
   shuffleDeck();
@@ -51,13 +55,14 @@ function init() {
   playerHand = [];
   dealerHand = [];
   message.textContent = "Game started. Deal cards!";
-  updateHand(); // card elements and properties and value with css and new card
+  updateHands(); // card elements and properties and value with css and new card
   calculateHand(); // will be doing the math
   settleBet(); // banks math
   draw(card); // push new card
   hitStand();
   winnerLoser();
   newGame();
+  resetBank();
   render();
 }*/
 
@@ -77,7 +82,7 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
-function updateHands() {
+function updateHand() {
   playerHandElement.innerHTML = "";
   dealerHandElement.innerHTML = "";
   playerHand.forEach((card) => {
@@ -87,13 +92,13 @@ function updateHands() {
   });
   dealerHand.forEach((card) => {
     const cardElement = document.createElement("div");
-    cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
+    cardElement.className - `card ${card.suit[0].toLowerCase()}${card.value}`;
     dealerHandElement.appendChild(cardElement);
   });
 }
 
 function drawCard() {
-  return deck.pop();
+  return deck.pop;
 }
 
 function startGame() {
@@ -111,7 +116,7 @@ function startGame() {
 
 function handleDeal() {
   if (currentBet > 0) {
-    startGame();
+    startGame;
   }
 }
 
@@ -121,7 +126,7 @@ function handleHit() {
     messageElement.textContent = "Bust! Dealer wins";
     settleBet(false);
   } else {
-    updateHands();
+    updatehand();
     render();
   }
 }
@@ -186,13 +191,5 @@ function stakeMoney() {
 }
 function render() {
   updateBankroll();
-  updateHands();
-}
-
-init();
-
-function init() {
-  createDeck();
-  shuffleDeck();
-  render();
+  updateHand();
 }

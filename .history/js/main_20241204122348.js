@@ -111,7 +111,7 @@ function startGame() {
 
 function handleDeal() {
   if (currentBet > 0) {
-    startGame();
+    startGame;
   }
 }
 
@@ -186,13 +186,5 @@ function stakeMoney() {
 }
 function render() {
   updateBankroll();
-  updateHands();
-}
-
-init();
-
-function init() {
-  createDeck();
-  shuffleDeck();
-  render();
+  updateHand();
 }

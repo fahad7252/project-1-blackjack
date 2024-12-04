@@ -87,7 +87,7 @@ function updateHands() {
   });
   dealerHand.forEach((card) => {
     const cardElement = document.createElement("div");
-    cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
+    cardElement.className - `card ${card.suit[0].toLowerCase()}${card.value}`;
     dealerHandElement.appendChild(cardElement);
   });
 }
@@ -111,7 +111,7 @@ function startGame() {
 
 function handleDeal() {
   if (currentBet > 0) {
-    startGame();
+    startGame;
   }
 }
 
@@ -186,13 +186,5 @@ function stakeMoney() {
 }
 function render() {
   updateBankroll();
-  updateHands();
-}
-
-init();
-
-function init() {
-  createDeck();
-  shuffleDeck();
-  render();
+  updateHand();
 }

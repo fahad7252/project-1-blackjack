@@ -188,7 +188,7 @@ function render() {
   updateBankroll();
   updateHands();
 }
-
+// Add at the end of file
 init();
 
 function init() {

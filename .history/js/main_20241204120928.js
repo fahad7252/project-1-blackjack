@@ -77,7 +77,7 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
-function updateHands() {
+function updateHand() {
   playerHandElement.innerHTML = "";
   dealerHandElement.innerHTML = "";
   playerHand.forEach((card) => {
@@ -87,13 +87,13 @@ function updateHands() {
   });
   dealerHand.forEach((card) => {
     const cardElement = document.createElement("div");
-    cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
+    cardElement.className - `card ${card.suit[0].toLowerCase()}${card.value}`;
     dealerHandElement.appendChild(cardElement);
   });
 }
 
 function drawCard() {
-  return deck.pop();
+  return deck.pop;
 }
 
 function startGame() {
@@ -111,7 +111,7 @@ function startGame() {
 
 function handleDeal() {
   if (currentBet > 0) {
-    startGame();
+    startGame;
   }
 }
 
@@ -121,7 +121,7 @@ function handleHit() {
     messageElement.textContent = "Bust! Dealer wins";
     settleBet(false);
   } else {
-    updateHands();
+    updatehand();
     render();
   }
 }
@@ -186,13 +186,5 @@ function stakeMoney() {
 }
 function render() {
   updateBankroll();
-  updateHands();
-}
-
-init();
-
-function init() {
-  createDeck();
-  shuffleDeck();
-  render();
+  updateHand();
 }
