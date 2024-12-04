@@ -1,4 +1,4 @@
-/*----- constants -----*/
+//----- constants -----
 const suits = ["s", "c", "d", "h"];
 const values = [
   "2",
@@ -16,7 +16,7 @@ const values = [
   "A",
 ];
 
-/*----- state variables -----*/
+//----- state variables -----
 
 let deck = [];
 let playerHand = [];
@@ -24,8 +24,8 @@ let dealerHand = [];
 let bankroll = 1000;
 let currentBet = 0;
 let winLoss = 0;
-
-/*----- cached elements  -----*/
+let gameState = "betting";
+//----- cached elements  -----
 const messageElement = document.getElementById("message");
 const dealerHandElement = document.getElementById("dealer-hand");
 const playerHandElement = document.getElementById("player-hand");
@@ -33,13 +33,19 @@ const bankrollElement = document.getElementById("bankroll");
 const currentBetElement = document.getElementById("current-bet");
 const winLossElement = document.getElementById("win-loss");
 
-/*----- event listeners -----*/
-
+//----- event listeners -----
 document.getElementById("deal-button").addEventListener("click", handleDeal);
 document.getElementById("hit-button").addEventListener("click", handleHit);
 document.getElementById("stand-button").addEventListener("click", handleStand);
-document.getElementById("start-button").addEventListener("click", startGame);
-
+document.getElementById("start-button").addEventListener("click", init);
+document.getElementById("bet-5").addEventListener("click", () => placeBet(5));
+document.getElementById("bet-10").addEventListener("click", () => placeBet(10));
+document.getElementById("bet-25").addEventListener("click", () => placeBet(25));
+document
+  .getElementById("bet-100")
+  .addEventListener("click", () => placeBet(100));
+document.getElementById("clear-bet").addEventListener("click", clearBet);
+//document.getElementById("clear-bet").addEventListener("click", clearBet);
 /*----- functions -----*/
 /*init();
 function init() {
@@ -60,6 +66,16 @@ function init() {
   newGame();
   render();
 }*/
+function init() {
+  createDeck();
+  shuffleDeck();
+  playerHand = [];
+  dealerHand = [];
+  currentBet = 0;
+  gameState = "betting";
+  messageElement.textContent = "Place your bet to start!";
+  render();
+}
 
 // LET THE SHOW BEGIN
 function createDeck() {
@@ -77,7 +93,7 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
-function updateHands() {
+/*function updateHands() {
   playerHandElement.innerHTML = "";
   dealerHandElement.innerHTML = "";
   playerHand.forEach((card) => {
@@ -90,7 +106,41 @@ function updateHands() {
     cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
     dealerHandElement.appendChild(cardElement);
   });
+}*/
+//////
+function updateHands() {
+  playerHandElement.innerHTML = "";
+  dealerHandElement.innerHTML = "";
+
+  dealerHand.forEach((card, index) => {
+    const cardElement = document.createElement("div");
+    if (gameState === "playing" && index === 1) {
+      cardElement.className = "card back";
+    } else {
+      cardElement.className = formatCardClass(card);
+    }
+    dealerHandElement.appendChild(cardElement);
+  });
+
+  playerHand.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.className = formatCardClass(card);
+    playerHandElement.appendChild(cardElement);
+  });
 }
+
+function formatCardClass(card) {
+  const suitMap = { s: "spades", h: "hearts", d: "diamonds", c: "clubs" };
+  let value = card.value;
+
+  // Format numbers correctly
+  if (["2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(value)) {
+    value = "r" + (value.length === 1 ? "0" : "") + value;
+  }
+
+  return `card ${suitMap[card.suit]} ${value}`;
+}
+///////
 
 function drawCard() {
   return deck.pop();

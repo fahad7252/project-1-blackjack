@@ -1,4 +1,4 @@
-/*----- constants -----*/
+//----- constants -----
 const suits = ["s", "c", "d", "h"];
 const values = [
   "2",
@@ -16,7 +16,7 @@ const values = [
   "A",
 ];
 
-/*----- state variables -----*/
+//----- state variables -----
 
 let deck = [];
 let playerHand = [];
@@ -25,7 +25,7 @@ let bankroll = 1000;
 let currentBet = 0;
 let winLoss = 0;
 
-/*----- cached elements  -----*/
+//----- cached elements  -----
 const messageElement = document.getElementById("message");
 const dealerHandElement = document.getElementById("dealer-hand");
 const playerHandElement = document.getElementById("player-hand");
@@ -33,17 +33,19 @@ const bankrollElement = document.getElementById("bankroll");
 const currentBetElement = document.getElementById("current-bet");
 const winLossElement = document.getElementById("win-loss");
 
-/*----- event listeners -----*/
+//----- event listeners -----
 
 document.getElementById("deal-button").addEventListener("click", handleDeal);
 document.getElementById("hit-button").addEventListener("click", handleHit);
 document.getElementById("stand-button").addEventListener("click", handleStand);
-document.getElementById("start-button").addEventListener("click", startGame);
-document.getElementById("new-game-button").addEventListener("click", newGame);
+document.getElementById("start-button").addEventListener("click", init);
+document.getElementById("bet-5").addEventListener("click", () => placeBet(5));
+document.getElementById("bet-10").addEventListener("click", () => placeBet(10));
+document.getElementById("bet-25").addEventListener("click", () => placeBet(25));
 document
-  .getElementById("reset-bank-button")
-  .addEventListener("click", resetBank);
-
+  .getElementById("bet-100")
+  .addEventListener("click", () => placeBet(100));
+//document.getElementById("clear-bet").addEventListener("click", clearBet);
 /*----- functions -----*/
 /*init();
 function init() {
@@ -55,16 +57,25 @@ function init() {
   playerHand = [];
   dealerHand = [];
   message.textContent = "Game started. Deal cards!";
-  updateHands(); // card elements and properties and value with css and new card
+  updateHand(); // card elements and properties and value with css and new card
   calculateHand(); // will be doing the math
   settleBet(); // banks math
   draw(card); // push new card
   hitStand();
   winnerLoser();
   newGame();
-  resetBank();
   render();
 }*/
+function init() {
+  createDeck();
+  shuffleDeck();
+  playerHand = [];
+  dealerHand = [];
+  currentBet = 0;
+  gameState = "betting";
+  messageElement.textContent = "Place your bet to start!";
+  render();
+}
 
 // LET THE SHOW BEGIN
 function createDeck() {
@@ -82,7 +93,7 @@ function shuffleDeck() {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 }
-function updateHands() {
+/*function updateHands() {
   playerHandElement.innerHTML = "";
   dealerHandElement.innerHTML = "";
   playerHand.forEach((card) => {
@@ -92,13 +103,43 @@ function updateHands() {
   });
   dealerHand.forEach((card) => {
     const cardElement = document.createElement("div");
-    cardElement.className - `card ${card.suit[0].toLowerCase()}${card.value}`;
+    cardElement.className = `card ${card.suit[0].toLowerCase()}${card.value}`;
     dealerHandElement.appendChild(cardElement);
   });
+}*/
+//////
+function updateHands() {
+  playerHandElement.innerHTML = "";
+  dealerHandElement.innerHTML = "";
+
+  dealerHand.forEach((card, index) => {
+    const cardElement = document.createElement("div");
+    if (gameState === "playing" && index === 1) {
+      cardElement.className = "card back";
+    } else {
+      let value = card.value;
+      if (value === "10") value = "r10";
+      else if (["2", "3", "4", "5", "6", "7", "8", "9"].includes(value))
+        value = "r0" + value;
+      cardElement.className = `card ${card.suit}${value}`;
+    }
+    dealerHandElement.appendChild(cardElement);
+  });
+
+  playerHand.forEach((card) => {
+    const cardElement = document.createElement("div");
+    let value = card.value;
+    if (value === "10") value = "r10";
+    else if (["2", "3", "4", "5", "6", "7", "8", "9"].includes(value))
+      value = "r0" + value;
+    cardElement.className = `card ${card.suit}${value}`;
+    playerHandElement.appendChild(cardElement);
+  });
 }
+///////
 
 function drawCard() {
-  return deck.pop;
+  return deck.pop();
 }
 
 function startGame() {
@@ -116,7 +157,7 @@ function startGame() {
 
 function handleDeal() {
   if (currentBet > 0) {
-    startGame;
+    startGame();
   }
 }
 
@@ -124,8 +165,9 @@ function handleHit() {
   playerHand.push(drawCard());
   if (calculateHand(playerHand) > 21) {
     messageElement.textContent = "Bust! Dealer wins";
+    settleBet(false);
   } else {
-    updatehands();
+    updateHands();
     render();
   }
 }
@@ -137,10 +179,13 @@ function handleStand() {
   const dealerTotal = calculateHand(dealerHand);
   if (dealerTotal > 21 || playerTotal > dealerTotal) {
     messageElement.textContent = "you win";
+    settleBet(true);
   } else if (playerTotal < dealerTotal) {
     messageElement.textContent = "dealer wins";
+    settleBet(false);
   } else {
     messageElement = "its tie";
+    settleBet(false, true);
   }
 }
 
@@ -180,4 +225,20 @@ function updateBankroll() {
   bankrollElement.textContent = `Bankroll: $${bankroll}`;
   currentBetElement.textContent = `Current Bet: $${currentBet}`;
   winLossElement.textContent = `Win/Loss: $${winLoss}`;
+}
+function stakeMoney() {
+  currentBet = 0;
+  currentBetElement.textContent = `CurrentBet: $${currentBet}`;
+}
+function render() {
+  updateBankroll();
+  updateHands();
+}
+
+init();
+
+function init() {
+  createDeck();
+  shuffleDeck();
+  render();
 }
