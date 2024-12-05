@@ -3,6 +3,7 @@
 This project is a simple browser-based Blackjack game written in JavaScript, HTML, 
 and CSS. The player competes against a dealer, trying to get as close to 21 as possible without exceeding it 
 (busting). The game also includes a betting system for added interactivity.
+![Screenshot 2024-12-05 145108](https://github.com/user-attachments/assets/1a4b7d6d-a385-452b-bf0a-ffad03d58655)
 
 ---
 
@@ -30,7 +31,7 @@ and CSS. The player competes against a dealer, trying to get as close to 21 as p
 ## How to Run
 
 1. Clone or download the project.
-2. Open `index.html` in any modern browser.
+2. Open `https://fahad7252.github.io/project-1-blackjack/` in any modern browser.
 3. Play the game!
 
 ---
