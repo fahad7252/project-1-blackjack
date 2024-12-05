@@ -1,0 +1,25 @@
+
+---
+
+## Key Functions in script.js
+
+- **createDeck**: Creates a standard 52-card deck.
+- **shuffleDeck**: Randomly shuffles the cards.
+- **placeBet**: Places a bet and updates the bankroll.
+- **handleDeal**: Starts the game and deals the initial cards.
+- **handleHit**: Adds a card to the player's hand.
+- **handleStand**: Ends the player's turn and lets the dealer play.
+- **calculateHand**: Calculates the total value of a hand, accounting for Aces.
+
+---
+
+## Future Improvements
+
+- Add animations for dealing cards.
+- Include a reset button to restart the game.
+- Improve visuals with advanced CSS styling.
+- Track cumulative wins/losses for a session.
+
+---
+
+## License ........

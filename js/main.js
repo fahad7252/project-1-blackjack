@@ -37,7 +37,7 @@ const winLossElement = document.getElementById("win-loss");
 document.getElementById("deal-button").addEventListener("click", handleDeal);
 document.getElementById("hit-button").addEventListener("click", handleHit);
 document.getElementById("stand-button").addEventListener("click", handleStand);
-document.getElementById("start-button").addEventListener("click", init);
+
 document.getElementById("bet-5").addEventListener("click", () => placeBet(5));
 document.getElementById("bet-10").addEventListener("click", () => placeBet(10));
 document.getElementById("bet-25").addEventListener("click", () => placeBet(25));
@@ -144,6 +144,7 @@ function handleDeal() {
     messageElement.textContent = "Place a bet first!";
     return;
   }
+  startGame();
   gameState = "playing";
   playerHand = [drawCard(), drawCard()];
   dealerHand = [drawCard(), drawCard()];
@@ -220,9 +221,9 @@ function settleBet(playerWins, tie = false) {
 }
 
 function updateBankroll() {
-  bankrollElement.textContent = `Bankroll: $${bankroll}`;
-  currentBetElement.textContent = `Current Bet: $${currentBet}`;
-  winLossElement.textContent = `Win/Loss: $${winLoss}`;
+  bankrollElement.textContent = bankroll;
+  currentBetElement.textContent = currentBet;
+  winLossElement.textContent = winLoss;
 }
 
 function render() {

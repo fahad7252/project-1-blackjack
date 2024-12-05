@@ -1,0 +1,50 @@
+START GAME
+- Initialize bankroll to 1000
+- Create and shuffle a deck of 52 cards
+- Set game state to "betting"
+
+WHILE game is running:
+    DISPLAY message: "Place your bet"
+    WAIT for player to place a bet
+
+    IF bet is placed:
+        START round:
+        - Deal two cards to the player and dealer
+        - Display cards (one dealer card is hidden)
+        - Set game state to "playing"
+
+        WHILE game state is "playing":
+            DISPLAY message: "Hit or Stand?"
+            WAIT for player action (Hit or Stand)
+
+            IF player chooses "Hit":
+                - Add a card to the player's hand
+                - Check if the player's hand value is over 21:
+                    IF yes, player busts:
+                        DISPLAY message: "Bust! Dealer wins"
+                        END round
+
+            IF player chooses "Stand":
+                - Reveal dealer's hidden card
+                - Dealer draws cards until hand value >= 17
+                - Compare dealer and player totals:
+                    IF dealer busts or player total > dealer total:
+                        DISPLAY message: "You win!"
+                        Update bankroll (double bet)
+                    ELSE IF dealer total > player total:
+                        DISPLAY message: "Dealer wins!"
+                        Deduct bet from bankroll
+                    ELSE:
+                        DISPLAY message: "Push! Bet returned"
+                        Return bet to bankroll
+                END round
+
+        END WHILE (round ends)
+        RESET game state to "betting"
+
+    ELSE:
+        DISPLAY message: "Place a bet to start"
+
+IF bankroll is 0:
+    DISPLAY message: "Game over! You're out of money"
+    END game
