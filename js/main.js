@@ -187,7 +187,6 @@ function handleStand() {
   }
   gameState = "finished";
   render();
-  messageElement.textContent = "Place your bet for a new round!";
   gameState = "betting"
 }
 
