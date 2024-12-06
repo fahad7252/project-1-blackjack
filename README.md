@@ -31,10 +31,9 @@ and CSS. The player competes against a dealer, trying to get as close to 21 as p
 ## How to Run
 
 1. Clone or download the project.
-2. Open `https://fahad7252.github.io/project-1-blackjack/` in any modern browser.
+2. [Click to Play!](https://fahad7252.github.io/project-1-blackjack/)
 3. Play the game!
 
----
 
-## Folder Structure
+                                  ENJOY !!!!
 
